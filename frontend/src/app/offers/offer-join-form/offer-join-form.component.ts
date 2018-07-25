@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {filter, take} from "rxjs/operators";
-import {User} from "../../user";
-import {ActivatedRoute} from "@angular/router";
-import {UserService} from "../../user.service";
-import {AuthService} from "../../auth.service";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {filter, take} from 'rxjs/operators';
+import {User} from '../../user';
+import {ActivatedRoute} from '@angular/router';
+import {UserService} from '../../user.service';
+import {AuthService} from '../../auth.service';
 
 @Component({
   selector: 'volontulo-offer-join-form',

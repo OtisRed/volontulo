@@ -55,7 +55,7 @@ import { ContactResolver } from './resolvers';
 import { FormErrorComponent } from './form-error/form-error.component';
 import { ContactService } from './contact.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { OfferJoinFormComponent } from "./offers/offer-join-form/offer-join-form.component";
+import { OfferJoinFormComponent } from './offers/offer-join-form/offer-join-form.component';
 
 Raven.config(environment.sentryDSN).install();
 
