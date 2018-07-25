@@ -63,7 +63,7 @@
                 <div class="alert alert-danger">
                     <h2>Możesz pomóc?</h2>
                     <p>Twoja pomoc jest ważna. Potrzebujemy Ciebie!</p>
-                    <a class="btn btn-light" href="{{ getJoinViewUrl(offer) }}"
+                    <a [routerLink]="['/offers', offer.slug, offer.id,'join']" class="btn btn-light"
                     >Zgłoś się na ten wolontariat</a>
                 </div>
              </ng-template>

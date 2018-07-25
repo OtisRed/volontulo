@@ -55,6 +55,7 @@ import { ContactResolver } from './resolvers';
 import { FormErrorComponent } from './form-error/form-error.component';
 import { ContactService } from './contact.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { OfferJoinFormComponent } from "./offers/offer-join-form/offer-join-form.component";
 
 Raven.config(environment.sentryDSN).install();
 
@@ -167,6 +168,12 @@ const appRoutes: Routes = [
     canActivate: [LoggedInGuard],
   },
   {
+    // adjust the path when component is ready
+    path: 'offers/:offerSlug/:offerId/join',
+    component: OfferJoinFormComponent,
+    // canActivate: [LoggedInGuard],
+  },
+  {
     path: '**',
     component: RedirectComponent
   },
@@ -214,7 +221,8 @@ registerLocaleData(localePl);
     ContactComponent,
     FormErrorComponent,
     OrganizationsListComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    OfferJoinFormComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'volontulo' }),
