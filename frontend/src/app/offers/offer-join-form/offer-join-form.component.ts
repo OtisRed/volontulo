@@ -19,6 +19,8 @@ export class OfferJoinFormComponent implements OnInit {
     phone_no: ['', [Validators.maxLength(20)]],
     });
 
+  public submitEnabled = false;
+
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
