@@ -1,5 +1,5 @@
 <div class="container">
-  <form id="contact_form" [formGroup]="joinForm">
+  <form id="contact_form" [formGroup]="joinForm" (ngSubmit)="onSubmit()">
     <div class="form-group row">
       <label class="col-form-label" for="{{ fullname }}">Imię i nazwisko:</label>
         <div class="col-md-5">
@@ -18,13 +18,13 @@
     </div>
     <div class="form-group-row">
       <label class="col-md-3 col-form-label" for="{{ message }}">Możliwe uwagi:</label>
-        <div class="col-md-9">
-          <textarea class="form-control" rows="3" formControlName="message"></textarea>
-        </div>
+      <div class="col-md-9">
+        <textarea class="form-control" rows="3" formControlName="message"></textarea>
+      </div>
     </div>
     <div class="form-group row">
       <div>
-        <button [disabled]="submitEnabled" class="btn-primary">
+        <button [disabled]="submitEnabled" type="submit" class="btn-primary">
           Wyślij
         </button>
       </div>
