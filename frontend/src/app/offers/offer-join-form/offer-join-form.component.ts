@@ -53,7 +53,8 @@ export class OfferJoinFormComponent implements OnInit {
 
   onSubmit() {
     if (this.joinForm.valid) {
-      console.log(this.joinForm.value);
+      this.submitEnabled = true
+//      console.log(this.joinForm.value);
 
 
       this.offersService.joinOffer(this.joinForm.value, this.offerId).subscribe()

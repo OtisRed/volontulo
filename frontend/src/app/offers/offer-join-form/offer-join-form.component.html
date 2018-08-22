@@ -4,22 +4,26 @@
       <label class="col-form-label" for="{{ fullname }}">Imię i nazwisko:</label>
         <div class="col-md-5">
           <input class="form-control" formControlName="applicant_name" id="{{ fullname }}"/>
+          <volontulo-form-error [fc]="joinForm.controls.applicant_name`"></volontulo-form-error>
         </div>
       <label class="col-form-label ml-auto" for="{{ email }}">Email:</label>
-        <div class="col-md-5">
-          <input class="form-control" formControlName="applicant_email" id="{{ email }}"/>
-        </div>
+      <div class="col-md-5">
+        <input class="form-control" formControlName="applicant_email" id="{{ email }}"/>
+        <volontulo-form-error [fc]="joinForm.controls.applicant_email"></volontulo-form-error>
       </div>
+    </div>
     <div class="form-group row">
       <label class="col-form-label ml-auto" for="{{ phone }}">Telefon:</label>
         <div class="col-md-5">
           <input class="form-control" formControlName="phone_no" />
+          <volontulo-form-error [fc]="joinForm.controls.phone_no"></volontulo-form-error>
         </div>
     </div>
     <div class="form-group-row">
       <label class="col-md-3 col-form-label" for="{{ message }}">Możliwe uwagi:</label>
       <div class="col-md-9">
         <textarea class="form-control" rows="3" formControlName="message"></textarea>
+        <volontulo-form-error [fc]="joinForm.controls.message" [minLength]="10" [maxLength]="2000"></volontulo-form-error>
       </div>
     </div>
     <div class="form-group row">

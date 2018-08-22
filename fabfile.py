@@ -298,8 +298,7 @@ server {{
     }}
 
     location = /o {{
-        include uwsgi_
-        params;
+        include uwsgi_params;
         uwsgi_pass unix:/run/uwsgi/volontulo.sock;
     }}
 
