@@ -1,16 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {catchError} from 'rxjs/operators';
-import {User} from '../../user';
+import {HttpClient} from '@angular/common/http';
+
 import {ActivatedRoute} from '@angular/router';
-import {UserService} from '../../user.service';
 import {AuthService} from '../../auth.service';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../environments/environment";
-import { map, mergeMap } from 'rxjs/operators';
-import {of} from "rxjs/observable/of";
-import { OffersService } from 'app/homepage-offer/offers.service';
-import {Offer} from "../../homepage-offer/offers.model";
+import {OffersService} from 'app/homepage-offer/offers.service';
+import {User} from '../../user';
+import {UserService} from '../../user.service';
+
 
 
 @Component({
@@ -50,7 +47,6 @@ export class OfferJoinFormComponent implements OnInit {
       )
 
     this.activatedRoute.params
-//      .map(params => params.offerId)
       .switchMap(params => this.offerId = params.offerId)
       .subscribe()
   }
