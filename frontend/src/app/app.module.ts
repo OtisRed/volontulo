@@ -29,8 +29,6 @@ import { RegulationsComponent } from './static/regulations.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { OfferDetailComponent } from './offers/offer-detail/offer-detail.component';
-import { IconComponent } from './icon/icon.component';
-import { IconLabelComponent } from './icon-label/icon-label.component';
 import { BannerComponent } from './banner/banner.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessagesService } from './messages/messages.service';
@@ -49,6 +47,7 @@ import { RegisterComponent } from './register/register.component';
 import { ActivationComponent } from './activation/activation.component';
 import { LoggedInGuard } from './guards/loggedInGuard.service';
 import { LoggedOutGuard } from './guards/loggedOutGuard.service';
+import { MetatagsService } from './metatags.service';
 import { AccountComponent} from './account/account.component';
 import { ContactComponent } from './contact/contact.component';
 import { ContactResolver } from './resolvers';
@@ -56,6 +55,7 @@ import { FormErrorComponent } from './form-error/form-error.component';
 import { ContactService } from './contact.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { OfferJoinFormComponent } from './offers/offer-join-form/offer-join-form.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 Raven.config(environment.sentryDSN).install();
 
@@ -199,8 +199,6 @@ registerLocaleData(localePl);
     RegulationsComponent,
     LoginComponent,
     OfferDetailComponent,
-    IconComponent,
-    IconLabelComponent,
     BannerComponent,
     OrganizationsComponent,
     FaqOrganizationsComponent,
@@ -234,8 +232,10 @@ registerLocaleData(localePl);
     RouterModule.forRoot(appRoutes),
     CookieModule.forRoot(),
     ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   providers: [
+    MetatagsService,
     AuthService,
     OffersService,
     OrganizationService,
