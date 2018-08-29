@@ -2,13 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {AuthService} from '../../auth.service';
 import {OffersService} from 'app/homepage-offer/offers.service';
 import {User} from '../../user';
 import {UserService} from '../../user.service';
-
-
 
 @Component({
   selector: 'volontulo-offer-join-form',
@@ -16,16 +14,17 @@ import {UserService} from '../../user.service';
 })
 
 export class OfferJoinFormComponent implements OnInit {
-  public joinForm: FormGroup = this.fb.group( {
-    applicant_email: ['', [Validators.required, Validators.email]],
-    applicant_name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]],
+  public joinForm: FormGroup = this.fb.group({
+    applicant_email: [''],
+    applicant_name: [''],
     message: ['', [Validators.minLength(10), Validators.maxLength(2000)]],
-    phone_no: ['', [Validators.maxLength(20)]],
-    });
+    phone_no: [''],
+  });
 
   public submitEnabled = false;
   public success: null | boolean = null;
   public offerId: number;
+  public error;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -34,7 +33,9 @@ export class OfferJoinFormComponent implements OnInit {
     private userService: UserService,
     private httpClient: HttpClient,
     private offersService: OffersService,
-  ) {}
+    private router: Router,
+  ) {
+  }
 
   ngOnInit() {
     this.authService.user$
@@ -44,7 +45,7 @@ export class OfferJoinFormComponent implements OnInit {
           this.joinForm.controls.applicant_name.setValue(this.userService.getFullName(user));
           this.joinForm.controls.phone_no.setValue(user.phoneNo);
         }
-      )
+      );
 
     this.activatedRoute.params
       .switchMap(params => this.offerId = params.offerId)
@@ -53,11 +54,14 @@ export class OfferJoinFormComponent implements OnInit {
 
   onSubmit() {
     if (this.joinForm.valid) {
-      this.submitEnabled = true
-//      console.log(this.joinForm.value);
+      this.submitEnabled = true;
 
-
-      this.offersService.joinOffer(this.joinForm.value, this.offerId).subscribe()
-        }
+      this.offersService.joinOffer(this.offerId, this.joinForm.value.message).subscribe(
+        response => {
+          if (response.status === 201) {
+            this.success = true}},
+        () => this.success = false,
+      )
+    }
   }
 }

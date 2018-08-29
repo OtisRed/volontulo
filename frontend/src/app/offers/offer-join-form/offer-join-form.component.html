@@ -1,22 +1,19 @@
 <div class="container">
-  <form id="contact_form" [formGroup]="joinForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="joinForm" (ngSubmit)="onSubmit()">
     <div class="form-group row">
+      <label class="col-form-label" for="{{ email }}">Email:</label>
+        <div class="col-md-5">
+          <input disabled class="form-control" formControlName="applicant_email" id="{{ email }}"/>
+        </div>
       <label class="col-form-label" for="{{ fullname }}">Imię i nazwisko:</label>
         <div class="col-md-5">
-          <input class="form-control" formControlName="applicant_name" id="{{ fullname }}"/>
-          <volontulo-form-error [fc]="joinForm.controls.applicant_name`"></volontulo-form-error>
+          <input disabled class="form-control" formControlName="applicant_name" id="{{ fullname }}"/>
         </div>
-      <label class="col-form-label ml-auto" for="{{ email }}">Email:</label>
-      <div class="col-md-5">
-        <input class="form-control" formControlName="applicant_email" id="{{ email }}"/>
-        <volontulo-form-error [fc]="joinForm.controls.applicant_email"></volontulo-form-error>
-      </div>
     </div>
     <div class="form-group row">
-      <label class="col-form-label ml-auto" for="{{ phone }}">Telefon:</label>
+      <label class="col-form-label" for="{{ phone }}">Telefon:</label>
         <div class="col-md-5">
-          <input class="form-control" formControlName="phone_no" />
-          <volontulo-form-error [fc]="joinForm.controls.phone_no"></volontulo-form-error>
+          <input disabled class="form-control" formControlName="phone_no"/>
         </div>
     </div>
     <div class="form-group-row">
@@ -28,10 +25,11 @@
     </div>
     <div class="form-group row">
       <div>
-        <button [disabled]="submitEnabled" type="submit" class="btn-primary">
+        <button type="submit" class="btn-primary">
           Wyślij
         </button>
       </div>
     </div>
   </form>
 </div>
+

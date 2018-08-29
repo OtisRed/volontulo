@@ -35,8 +35,8 @@ export class OffersService {
     return this.http.put(`${environment.apiRoot}/offers/${id}/`, offer);
   }
 
-  joinOffer(offer: Offer, id: number) {
-    return this.http.post(`${environment.apiRoot}/offers/${id}/join`, offer);
+  joinOffer(id: number, message: string) {
+    return this.http.post(`${environment.apiRoot}/offers/${id}/join/`, {message}, {observe: 'response'});
   }
 
 }
