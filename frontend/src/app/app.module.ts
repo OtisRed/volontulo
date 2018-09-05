@@ -168,10 +168,9 @@ const appRoutes: Routes = [
     canActivate: [LoggedInGuard],
   },
   {
-    // adjust the path when component is ready
     path: 'offers/:offerSlug/:offerId/join',
     component: OfferJoinFormComponent,
-    // canActivate: [LoggedInGuard],
+    canActivate: [LoggedInGuard],
   },
   {
     path: '**',

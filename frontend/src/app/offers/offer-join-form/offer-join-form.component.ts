@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
+import {Location} from '@angular/common'
 
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {AuthService} from '../../auth.service';
 import {OffersService} from 'app/homepage-offer/offers.service';
 import {User} from '../../user';
@@ -33,7 +34,7 @@ export class OfferJoinFormComponent implements OnInit {
     private userService: UserService,
     private httpClient: HttpClient,
     private offersService: OffersService,
-    private router: Router,
+    private location: Location ,
   ) {
   }
 
@@ -59,8 +60,7 @@ export class OfferJoinFormComponent implements OnInit {
       this.offersService.joinOffer(this.offerId, this.joinForm.value.message).subscribe(
         response => {
           if (response.status === 201) {
-            this.success = true}},
-        () => this.success = false,
+            this.location.back()}}
       )
     }
   }
