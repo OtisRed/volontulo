@@ -24,7 +24,7 @@
         <volontulo-form-error [fc]="joinForm.controls.message" [minLength]="10" [maxLength]="2000"></volontulo-form-error>
       </div>
       <div>
-        <button type="submit" name="submit" class="btn btn-primary">
+        <button [disabled]="joinForm.invalid" type="submit" name="submit" class="btn btn-primary">
           Wyślij
         </button>
       </div>

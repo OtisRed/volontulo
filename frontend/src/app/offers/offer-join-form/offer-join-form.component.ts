@@ -18,7 +18,7 @@ export class OfferJoinFormComponent implements OnInit {
   public joinForm: FormGroup = this.fb.group({
     applicantEmail: [{value: '', disabled: true}],
     applicantName: [{value: '', disabled: true}],
-    message: ['', [Validators.minLength(10), Validators.maxLength(2000)]],
+    message: ['Miejsce na pytania i informacje do organizatora', [Validators.minLength(10), Validators.maxLength(2000)]],
     phoneNo: [{value: '', disabled: true}],
   });
 
