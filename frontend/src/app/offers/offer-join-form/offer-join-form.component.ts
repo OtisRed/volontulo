@@ -16,14 +16,13 @@ import {UserService} from '../../user.service';
 
 export class OfferJoinFormComponent implements OnInit {
   public joinForm: FormGroup = this.fb.group({
-    applicant_email: [''],
-    applicant_name: [''],
+    applicantEmail: [{value: '', disabled: true}],
+    applicantName: [{value: '', disabled: true}],
     message: ['', [Validators.minLength(10), Validators.maxLength(2000)]],
-    phone_no: [''],
+    phoneNo: [{value: '', disabled: true}],
   });
 
   public submitEnabled = false;
-  public success: null | boolean = null;
   public offerId: number;
   public error;
 
@@ -42,9 +41,9 @@ export class OfferJoinFormComponent implements OnInit {
     this.authService.user$
       .subscribe(
         (user: User) => {
-          this.joinForm.controls.applicant_email.setValue(user.email);
-          this.joinForm.controls.applicant_name.setValue(this.userService.getFullName(user));
-          this.joinForm.controls.phone_no.setValue(user.phoneNo);
+          this.joinForm.controls.applicantEmail.setValue(user.email);
+          this.joinForm.controls.applicantName.setValue(this.userService.getFullName(user));
+          this.joinForm.controls.phoneNo.setValue(user.phoneNo);
         }
       );
 

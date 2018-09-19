@@ -1,35 +1,33 @@
 <div class="container">
   <form [formGroup]="joinForm" (ngSubmit)="onSubmit()">
     <div class="form-group row">
-      <label class="col-form-label" for="{{ email }}">Email:</label>
-        <div class="col-md-5">
-          <input disabled class="form-control" formControlName="applicant_email" id="{{ email }}"/>
+      <label class="col-sm-4 col-md-3 col-lg-2 col-form-label" for="fullname">Imię i nazwisko:</label>
+        <div class="col-sm-8 col-md-9 col-lg-10">
+          <input class="form-control" formControlName="applicantName" id="fullname"/>
         </div>
-      <label class="col-form-label" for="{{ fullname }}">Imię i nazwisko:</label>
-        <div class="col-md-5">
-          <input disabled class="form-control" formControlName="applicant_name" id="{{ fullname }}"/>
-        </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-form-label" for="{{ phone }}">Telefon:</label>
-        <div class="col-md-5">
-          <input disabled class="form-control" formControlName="phone_no"/>
-        </div>
-    </div>
-    <div class="form-group-row">
-      <label class="col-md-3 col-form-label" for="{{ message }}">Możliwe uwagi:</label>
-      <div class="col-md-9">
-        <textarea class="form-control" rows="3" formControlName="message"></textarea>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-4 col-md-3 col-lg-2 col-form-label" for="email">Email:</label>
+          <div class="col-sm-8 col-md-9 col-lg-10">
+            <input class="form-control" formControlName="applicantEmail" id="email"/>
+          </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-4 col-md-3 col-lg-2 col-form-label" for="phone">Telefon:</label>
+          <div class="col-sm-8 col-md-9 col-lg-10">
+            <input class="form-control" formControlName="phoneNo" id="phone"/>
+          </div>
+      </div>
+      <div>
+        <label for="message">Możliwe uwagi:</label>
+        <textarea class="form-control" rows="3" formControlName="message" id="message"></textarea>
         <volontulo-form-error [fc]="joinForm.controls.message" [minLength]="10" [maxLength]="2000"></volontulo-form-error>
       </div>
-    </div>
-    <div class="form-group row">
       <div>
-        <button type="submit" class="btn-primary">
+        <button type="submit" name="submit" class="btn btn-primary">
           Wyślij
         </button>
       </div>
-    </div>
   </form>
 </div>
 
