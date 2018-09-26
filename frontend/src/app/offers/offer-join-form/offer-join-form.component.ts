@@ -20,6 +20,7 @@ export class OfferJoinFormComponent implements OnInit {
     applicantName: [{value: '', disabled: true}],
     message: ['', [Validators.minLength(10), Validators.maxLength(2000)]],
     phoneNo: [{value: '', disabled: true}],
+    honeyValue: '',
   });
 
   public submitEnabled = false;
@@ -55,6 +56,7 @@ export class OfferJoinFormComponent implements OnInit {
   onSubmit() {
     if (this.joinForm.valid) {
       this.submitEnabled = true;
+      delete this.joinForm.value.honey_value;
 
       this.offersService.joinOffer(this.offerId, this.joinForm.value.message).subscribe(
         response => {
