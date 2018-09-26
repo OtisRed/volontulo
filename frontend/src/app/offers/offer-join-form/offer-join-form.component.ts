@@ -18,7 +18,7 @@ export class OfferJoinFormComponent implements OnInit {
   public joinForm: FormGroup = this.fb.group({
     applicantEmail: [{value: '', disabled: true}],
     applicantName: [{value: '', disabled: true}],
-    message: ['Miejsce na pytania i informacje do organizatora', [Validators.minLength(10), Validators.maxLength(2000)]],
+    message: ['', [Validators.minLength(10), Validators.maxLength(2000)]],
     phoneNo: [{value: '', disabled: true}],
   });
 
@@ -33,7 +33,7 @@ export class OfferJoinFormComponent implements OnInit {
     private userService: UserService,
     private httpClient: HttpClient,
     private offersService: OffersService,
-    private location: Location ,
+    private location: Location,
   ) {
   }
 
@@ -59,7 +59,8 @@ export class OfferJoinFormComponent implements OnInit {
       this.offersService.joinOffer(this.offerId, this.joinForm.value.message).subscribe(
         response => {
           if (response.status === 201) {
-            this.location.back()}}
+            this.location.back()}},
+            err => this.error = err.error.nonFieldErrors
       )
     }
   }
