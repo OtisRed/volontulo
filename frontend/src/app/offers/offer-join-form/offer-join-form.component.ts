@@ -25,6 +25,7 @@ export class OfferJoinFormComponent implements OnInit {
   });
   public offerId: number;
   public submitEnabled = false;
+  public communicate = 'Dodatkowe informacje dla organizatora (pole nieobowiązkowe)';
 
   constructor(
     private activatedRoute: ActivatedRoute,

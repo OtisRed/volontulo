@@ -20,7 +20,7 @@
       </div>
       <div>
         <label for="message">Możliwe uwagi:</label>
-        <textarea type="text" class="form-control" rows="3" id="message" placeholder="Dodatkowe informacje dla organizatora" formControlName="message"></textarea>
+        <textarea type="text" class="form-control" rows="3" id="message" placeholder="{{ communicate }}" formControlName="message"></textarea>
         <volontulo-form-error [fc]="joinForm.controls.message" [minLength]="10" [maxLength]="2000"></volontulo-form-error>
       </div>
       <div class="form-group row d-none">
