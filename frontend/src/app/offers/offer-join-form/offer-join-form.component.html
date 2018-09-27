@@ -26,12 +26,12 @@
       <div class="form-group row d-none">
         <label class="col-sm-4 col-md-3 col-lg-2 col-form-label">Bot trap</label>
         <div class="col-sm-8 col-md-9 col-lg-10">
-          <input type="text" class="form-control" formControlName="honey_value" />
+          <input type="text" class="form-control" formControlName="honeyValue" />
         </div>
       </div>
-      <div>
-        <button [disabled]="joinForm.invalid" type="submit" name="submit" class="btn btn-primary">
-          Wyślij
+      <div class="d-flex justify-content-center" style="padding: 10px">
+        <button type="submit" name="submit" class="btn btn-primary" [disabled]="joinForm.invalid">
+          Zgłaszam się do pomocy
         </button>
       </div>
   </form>
