@@ -15,26 +15,25 @@ import {UserService} from '../../user.service';
 })
 
 export class OfferJoinFormComponent implements OnInit {
+  public error;
   public joinForm: FormGroup = this.fb.group({
     applicantEmail: [{value: '', disabled: true}],
     applicantName: [{value: '', disabled: true}],
     message: ['', [Validators.minLength(10), Validators.maxLength(2000)]],
     phoneNo: [{value: '', disabled: true}],
-    honeyValue: '',
+    honeyValue: [''],
   });
-
-  public submitEnabled = false;
   public offerId: number;
-  public error;
+  public submitEnabled = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder,
     private authService: AuthService,
-    private userService: UserService,
+    private fb: FormBuilder,
     private httpClient: HttpClient,
-    private offersService: OffersService,
     private location: Location,
+    private offersService: OffersService,
+    private userService: UserService,
   ) {
   }
 
@@ -56,7 +55,7 @@ export class OfferJoinFormComponent implements OnInit {
   onSubmit() {
     if (this.joinForm.valid) {
       this.submitEnabled = true;
-      delete this.joinForm.value.honey_value;
+      delete this.joinForm.value.honeyValue;
 
       this.offersService.joinOffer(this.offerId, this.joinForm.value.message).subscribe(
         response => {
