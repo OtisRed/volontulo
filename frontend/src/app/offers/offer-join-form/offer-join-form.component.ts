@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
-import {Location} from '@angular/common'
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Location } from '@angular/common'
 
-import {ActivatedRoute} from '@angular/router';
-import {AuthService} from '../../auth.service';
-import {OffersService} from 'app/homepage-offer/offers.service';
-import {User} from '../../user';
-import {UserService} from '../../user.service';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../auth.service';
+import { OffersService } from 'app/homepage-offer/offers.service';
+import { User } from '../../user';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'volontulo-offer-join-form',
@@ -16,6 +16,7 @@ import {UserService} from '../../user.service';
 
 export class OfferJoinFormComponent implements OnInit {
   public error;
+  public communicate = 'Dodatkowe informacje dla organizatora (pole nieobowiązkowe)';
   public joinForm: FormGroup = this.fb.group({
     applicantEmail: [{value: '', disabled: true}],
     applicantName: [{value: '', disabled: true}],
@@ -24,8 +25,7 @@ export class OfferJoinFormComponent implements OnInit {
     honeyValue: [''],
   });
   public offerId: number;
-  public submitEnabled = false;
-  public communicate = 'Dodatkowe informacje dla organizatora (pole nieobowiązkowe)';
+  public submitEnabled = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -54,9 +54,8 @@ export class OfferJoinFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.joinForm.valid) {
-      this.submitEnabled = true;
-      delete this.joinForm.value.honeyValue;
+    if (this.joinForm.valid && !this.joinForm.value.honeyValue) {
+      this.submitEnabled = false;
 
       this.offersService.joinOffer(this.offerId, this.joinForm.value.message).subscribe(
         response => {
